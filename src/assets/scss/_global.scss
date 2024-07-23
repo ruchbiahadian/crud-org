@@ -132,8 +132,13 @@ body{
   }
 }
 
+.login_supported_logo{
+  width: 25px;
+}
+
 @media only screen and (max-width: 435px) {
   .login_container{
+    width: 300px !important;
     .blocks{
       width: 80% !important;
       display: flex !important;

@@ -21,6 +21,7 @@
                                 Masuk
                         </b-button><br><br>
                         <span class="has-text-danger">{{ errors[0] }}</span><br>
+                        <img class="login_supported_logo" src="../../assets/img/logo.png" alt=""> |
                         <a @click="login">Masuk dengan google</a>
                     </Field>
                 </Form>
