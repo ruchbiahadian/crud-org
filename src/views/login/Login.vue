@@ -3,7 +3,10 @@
         <div class="blocks">
             <div class="left">Sistem Pendataan<br>Organisasi (SPO)</div>
             <div class="right">
-                <h1 class="title">Login</h1>
+                <div class="logo">
+                    <img class="login_supported_logo" src="../../assets/img/logo.png" alt="">
+                    <h1 class="title">| Login</h1>
+                </div>
                 <Form @submit="login">
                     <Field name="email" rules="required" v-slot="{ field, errors }">
                         <b-input
@@ -21,7 +24,6 @@
                                 Masuk
                         </b-button><br><br>
                         <span class="has-text-danger">{{ errors[0] }}</span><br>
-                        <img class="login_supported_logo" src="../../assets/img/logo.png" alt=""> |
                         <a @click="login">Masuk dengan google</a>
                     </Field>
                 </Form>

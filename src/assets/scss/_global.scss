@@ -66,7 +66,17 @@ body{
     background-color: white;
     border-radius: 0 20px 20px 0;
     padding: 20px;
+    .logo{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
 
+      img{
+        width: 32px;
+        height: 35px;
+      }
+    }
   }
 }
 
@@ -132,10 +142,6 @@ body{
   }
 }
 
-.login_supported_logo{
-  width: 25px;
-}
-
 @media only screen and (max-width: 435px) {
   .login_container{
     width: 300px !important;
@@ -159,7 +165,7 @@ body{
         width: 100%;
         border-radius: 0 0 20px 20px;
 
-        h1{
+        .logo{
           display: none;
         }
 
@@ -174,6 +180,15 @@ body{
 }
 
 @media only screen and (max-width: 635px) {
+  .logo{
+    img{
+      width: 20px !important;
+      height: 20px !important;
+    }
+    h1{
+      font-size: 20px;
+    }
+  }
   .login_container{
     width: 400px !important;
   }
