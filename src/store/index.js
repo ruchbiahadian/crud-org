@@ -21,7 +21,14 @@ export default createStore({
   },
   actions: {
     async logout({commit}, router){
-      const result = await Swal.fire({
+      const customBtn = Swal.mixin({
+        customClass: {
+          confirmButton: "button is-danger mr-1",
+          cancelButton: "button is-light ml-1"
+        },
+        buttonsStyling: false
+      });
+      const result = await customBtn.fire({
         title: "Apakah Anda yakin?",
         showCancelButton: true,
         confirmButtonText: "Ya",
