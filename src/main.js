@@ -34,7 +34,6 @@ if(cookie.getJSON('token') !== undefined){
   );
 }
 
-
 const app = createApp(App)
 app.use(store)
 app.use(router)

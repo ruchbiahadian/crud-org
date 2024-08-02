@@ -35,13 +35,18 @@
 
 <script>
     import { required } from "@vee-validate/rules";
-import cookie from "js-cookie";
+    import cookie from "js-cookie";
     import { Form, Field } from "vee-validate";
     export default{
         name: "login",
         components: {
             Form,
             Field,
+        },
+        data() {
+            return {
+                email: ""
+            }
         },
         methods: {
             login(){
