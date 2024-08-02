@@ -13,6 +13,8 @@
 
 <script>
     import FormOrg from '../form/FormOrg.vue'
+    import { swalConfig } from "@/swalConfig";
+
     export default{
         name: 'existing_organization',
         components:{
@@ -54,14 +56,7 @@
                         address : payload.address,
                         imageUrl : payload.imageUrl,
                     }
-                    const customBtn = this.$Swal.mixin({
-                        customClass: {
-                            confirmButton: "button is-danger mr-1",
-                            cancelButton: "button is-light ml-1"
-                        },
-                        buttonsStyling: false
-                    });
-                    const result = await customBtn.fire({
+                    const result = await swalConfig.fire({
                         title: "Apakah Anda yakin?",
                         showCancelButton: true,
                         confirmButtonText: "Ya",

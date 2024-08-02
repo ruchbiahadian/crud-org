@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import { swalConfig } from "@/swalConfig";
 export default{
     name: 'organization-asset',
     data() {
@@ -113,14 +114,7 @@ export default{
             this.$router.push("/create-organization-asset");
         },
         async deleteOrgAsset(id){
-                const customBtn = this.$Swal.mixin({
-                    customClass: {
-                        confirmButton: "button is-danger mr-1",
-                        cancelButton: "button is-light ml-1"
-                    },
-                    buttonsStyling: false
-                });
-                const result = await customBtn.fire({
+                const result = await swalConfig.fire({
                     title: "Apakah Anda yakin?",
                     showCancelButton: true,
                     confirmButtonText: "Ya",

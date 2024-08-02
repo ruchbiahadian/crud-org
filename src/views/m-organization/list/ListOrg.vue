@@ -81,6 +81,7 @@
 </template>
 
 <script>
+    import { swalConfig } from "@/swalConfig";
     export default{
         name: 'organization',
         data() {
@@ -113,14 +114,7 @@
                 this.$router.push('/detail-organization/' + id);
             },
             async deleteOrg(id){
-                const customBtn = this.$Swal.mixin({
-                    customClass: {
-                        confirmButton: "button is-danger mr-1",
-                        cancelButton: "button is-light ml-1"
-                    },
-                    buttonsStyling: false
-                });
-                const result = await customBtn.fire({
+                const result = await swalConfig.fire({
                     title: "Apakah Anda yakin?",
                     showCancelButton: true,
                     confirmButtonText: "Ya",
