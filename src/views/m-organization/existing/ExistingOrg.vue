@@ -41,7 +41,8 @@
                             );
                         });
                     } catch (error) {
-                        
+                        this.$store.dispatch('showError');
+                        console.log(error)
                     }finally{
                         this.$refs.formOrgRef.property.animation.submitLoading = false;
                     }
