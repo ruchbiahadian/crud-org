@@ -103,7 +103,8 @@ export default{
                         this.organizationAsset = resp.data;
                     });
                 } catch (error) {
-                    
+                    this.$store.dispatch('showError');
+                    console.log(error)
                 } finally {
                     this.property.animation.isLoading = false;
                 }
@@ -131,18 +132,11 @@ export default{
                         await this.$axios
                         .delete("organizations-assets/" + id)
                         .then(() => {
-                            this.$Swal.fire({
-                                title: "Berhasil!",
-                                text: "Organisasi berhasil dihapus!",
-                                icon: "success",
-                                showConfirmButton: false,
-                                timer: 1500
-                            }).then(() => {
-                                window.location.reload()
-                            })
+                            this.$store.dispatch('showSuccess',{ text: "Aset organisasi berhasil dihapus!", router: this.$router})
                         });
                     } catch (error) {
-
+                        this.$store.dispatch('showError');
+                        console.log(error)
                     } finally {
                         this.property.animation.isLoading = false;
                     }
@@ -162,7 +156,8 @@ export default{
                     org = resp.data
                 });
                 } catch (error) {
-
+                    this.$store.dispatch('showError');
+                    console.log(error)
                 } finally {
                     let temp = null;
                     org.forEach(item => {

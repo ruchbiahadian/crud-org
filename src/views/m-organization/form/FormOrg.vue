@@ -5,7 +5,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Nama</span>
-            <Field name="form.name" rules="required" v-slot="{ field, errors }" :model-value="form.name">
+            <Field name="form.name" :rules="{required, min:1}" v-slot="{ field, errors }" :model-value="form.name">
                 <b-input
                     v-bind="field"
                     size="is-small"
@@ -17,7 +17,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Kontak</span>
-            <Field name="form.contact" rules="required" v-slot="{ field, errors }" :model-value="form.contact">
+            <Field name="form.contact" :rules="{required, min:10}" v-slot="{ field, errors }" :model-value="form.contact">
                 <b-input
                     v-bind="field"
                     size="is-small"
@@ -30,7 +30,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Alamat</span>
-            <Field name="form.address" rules="required" v-slot="{ field, errors }" :model-value="form.address">
+            <Field name="form.address" :rules="{required, min:10}" v-slot="{ field, errors }" :model-value="form.address">
                 <b-input
                     type="textarea"
                     v-bind="field"

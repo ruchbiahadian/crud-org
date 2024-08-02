@@ -25,29 +25,20 @@
                     address : payload.address,
                     imageUrl : payload.imageUrl,
                 }
-
                 this.$refs.formOrgRef.property.animation.submitLoading = true;
                 try {
                     await this.$axios
                     .post("organizations", data)
                     .then(() => {
-                        this.$Swal.fire({
-                            title: "Berhasil!",
-                            text: "Organisasi berhasil ditambahkan!",
-                            icon: "success",
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            window.location.href = '/'
-                        })
+                        this.$store.dispatch('showSuccess',{ text: "Organisasi berhasil ditambahkan!", path: "/", router: this.$router})
                     });
                 } catch (error) {
-                    
+                   this.$store.dispatch('showError');
+                   console.log(error)
                 } finally {
                     this.$refs.formOrgRef.property.animation.submitLoading = false;
                 }
             },
         },
-
     }
 </script>

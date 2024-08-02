@@ -72,18 +72,11 @@
                             await this.$axios
                             .put("organizations/" + this.identity.mainId, data)
                             .then(() => {
-                                this.$Swal.fire({
-                                    title: "Berhasil!",
-                                    text: "Organisasi berhasil diubah!",
-                                    icon: "success",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                }).then(() => {
-                                    window.location.href = '/'
-                                })
+                                this.$store.dispatch('showSuccess',{ text: "Organisasi berhasil diubah!", path: "/", router: this.$router})
                             });
                         } catch (error) {
-                            
+                            this.$store.dispatch('showError');
+                            console.log(error)
                         } finally {
                             this.$refs.formOrgRef.property.animation.submitLoading = false;
                         }

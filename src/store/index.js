@@ -17,10 +17,10 @@ export default createStore({
     },
     SET_SIDEBAR(state){
       state.sidebar = !state.sidebar;
-    }
+    },
   },
   actions: {
-    async logout({commit}, router){
+    async logout({commit}){
       const customBtn = Swal.mixin({
         customClass: {
           confirmButton: "button is-danger mr-1",
@@ -50,6 +50,29 @@ export default createStore({
     },
     setSidebar({commit}){
       commit('SET_SIDEBAR')
+    },
+    showError(){
+      Swal.fire({
+        title: "Terjadi Kesalahan!",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 1500
+    });
+    },
+    showSuccess({}, {text, path, router}){
+      Swal.fire({
+        title: "Berhasil!",
+        text: text,
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+      }).then(() => {
+        if(path){
+          router.push(path);
+        }else{
+          window.location.reload();
+        }
+      })
     }
   }
 })

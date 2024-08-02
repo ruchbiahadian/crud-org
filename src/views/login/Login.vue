@@ -8,7 +8,7 @@
                     <h1 class="title">| Login</h1>
                 </div>
                 <Form @submit="login">
-                    <Field name="email" rules="required" v-slot="{ field, errors }">
+                    <Field name="email" :rules="{email, required}" v-slot="{ field, errors }">
                         <b-input
                             icon="email"
                             v-bind="field"
@@ -34,7 +34,8 @@
 </template>
 
 <script>
-    import cookie from "js-cookie";
+    import { required } from "@vee-validate/rules";
+import cookie from "js-cookie";
     import { Form, Field } from "vee-validate";
     export default{
         name: "login",
@@ -42,30 +43,19 @@
             Form,
             Field,
         },
-        data() {
-            return {
-                
-            }
-        },
         methods: {
             login(){
                 this.$axios.post("auth/simple-login", {
-                    email: this.email,
-                    password: this.password
+                    email: this.email
                 }).then(response => {
                     let token = response.data
                     let forcookie = JSON.stringify(token)
                     cookie.set("token", forcookie, {expires: 1});
                     this.$store.commit('SET_LOGIN', forcookie)
-                    this.$Swal.fire({
-                            title: "Berhasil!",
-                            text: "Anda telah berhasil login!",
-                            icon: "success",
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            window.location.href = '/'
-                        })
+                    this.$store.dispatch('showSuccess',{ text: "Anda telah berhasil login!", router: this.$router})
+                }).catch(error => {
+                    this.$store.dispatch('showError');
+                    console.log(error);
                 })
             },
             login2(){
@@ -105,6 +95,5 @@
                 console.log(xtoken)
             }
         },
-
     }
 </script>

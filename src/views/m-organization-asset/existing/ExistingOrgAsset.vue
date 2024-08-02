@@ -41,7 +41,8 @@
                             );
                         });
                     } catch (error) {
-                        
+                        this.$store.dispatch('showError');
+                        console.log(error)
                     }finally{
                         this.$refs.formOrgAssetRef.property.animation.submitLoading = false;
                     }
@@ -72,18 +73,11 @@
                             await this.$axios
                             .put("organizations-assets/" + this.identity.mainId, data)
                             .then(() => {
-                                this.$Swal.fire({
-                                    title: "Berhasil!",
-                                    text: "Organisasi berhasil diubah!",
-                                    icon: "success",
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                }).then(() => {
-                                    this.$router.push("/organization-asset");
-                                })
+                                this.$store.dispatch('showSuccess',{ text: "Aset organisasi berhasil diubah!", path: "/organization-asset", router: this.$router})
                             });
                         } catch (error) {
-                            
+                            this.$store.dispatch('showError');
+                            console.log(error)
                         } finally {
                             this.$refs.formOrgAssetRef.property.animation.submitLoading = false;
                         }

@@ -33,7 +33,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Alamat Kontrak</span>
-            <Field name="form.contractAddress" rules="required" v-slot="{ field, errors }" :model-value="form.contractAddress">
+            <Field name="form.contractAddress" :rules="{required, min:10}" v-slot="{ field, errors }" :model-value="form.contractAddress">
                 <b-input
                     v-bind="field"
                     size="is-small"
@@ -45,7 +45,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Alamat Kreator</span>
-            <Field name="form.creatorAddress" rules="required" v-slot="{ field, errors }" :model-value="form.creatorAddress">
+            <Field name="form.creatorAddress" :rules="{required, min:10}" v-slot="{ field, errors }" :model-value="form.creatorAddress">
                 <b-input
                     v-bind="field"
                     size="is-small"
@@ -57,7 +57,7 @@
         </div>
         <div class="columns">
             <span class="column is-one-fifth is-flex is-justify-content-start">Tipe Kontrak</span>
-            <Field name="form.contractType" rules="required" v-slot="{ field, errors }" :model-value="form.contractType">
+            <Field name="form.contractType" :rules="{required, min:4}" v-slot="{ field, errors }" :model-value="form.contractType">
                 <b-input
                     v-bind="field"
                     size="is-small"
@@ -168,7 +168,8 @@ export default{
                         })
                     });
                 } catch (error) {
-                    
+                    this.$store.dispatch('showError');
+                    console.log(error)
                 } finally {
                     this.property.animation.submitLoading = false;
                 }

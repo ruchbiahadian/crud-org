@@ -31,18 +31,11 @@ export default{
                     await this.$axios
                     .post("organizations-assets", data)
                     .then(() => {
-                        this.$Swal.fire({
-                            title: "Berhasil!",
-                            text: "Aset Organisasi berhasil ditambahkan!",
-                            icon: "success",
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            this.$router.push("/organization-asset");
-                        })
+                        this.$store.dispatch('showSuccess',{ text: "Aset organisasi berhasil ditambahkan!", path: "/organization-asset", router: this.$router})
                     });
                 } catch (error) {
-                    
+                    this.$store.dispatch('showError');
+                    console.log(error)
                 } finally {
                     this.$refs.formOrgAssetRef.property.animation.submitLoading = false;
                 }
