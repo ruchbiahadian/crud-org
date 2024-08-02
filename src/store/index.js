@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import cookie from "js-cookie";
 import Swal from 'sweetalert2';
+import { swalConfig } from "@/swalConfig";
 
 export default createStore({
   state: {
@@ -21,14 +22,7 @@ export default createStore({
   },
   actions: {
     async logout({commit}){
-      const customBtn = Swal.mixin({
-        customClass: {
-          confirmButton: "button is-danger mr-1",
-          cancelButton: "button is-light ml-1"
-        },
-        buttonsStyling: false
-      });
-      const result = await customBtn.fire({
+      const result = await swalConfig.fire({
         title: "Apakah Anda yakin?",
         showCancelButton: true,
         confirmButtonText: "Ya",
