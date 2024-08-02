@@ -11,10 +11,6 @@
         <div class="toogle" @click="setSidebar">
           <b-icon type="is-light" icon="close"></b-icon>
         </div>
-        <!-- <img
-          src="/static/img/buefy-logo.png"
-          alt="Lightweight UI components for Vue.js based on Bulma"
-        /> -->
         <div class="txt">
           Sistem Pendataan Organisasi (SPO)
         </div>
@@ -27,7 +23,6 @@
         </div>
       </div>
     </b-sidebar>
-    <!-- <b-button @click="open = true">Show</b-button> -->
   </section>
 </template>
 
