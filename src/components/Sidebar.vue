@@ -5,21 +5,19 @@
       :fullheight="fullheight"
       v-model="sidebar"
       class="sidebar"
-      :can-cancel = false
+      :can-cancel="false"
     >
       <div>
         <div class="toogle" @click="setSidebar">
           <b-icon type="is-light" icon="close"></b-icon>
         </div>
-        <div class="txt">
-          Sistem Pendataan Organisasi (SPO)
-        </div>
+        <div class="txt">Sistem Pendataan Organisasi (SPO)</div>
         <div class="menu_list">Menu</div>
         <div class="item">
-            <a @click="routeToPageOrganization">Organisasi</a>
+          <a @click="routeToPageOrganization">Organisasi</a>
         </div>
         <div class="item">
-            <a @click="routeToPageOrganizationAsset">Aset Organisasi</a>
+          <a @click="routeToPageOrganizationAsset">Aset Organisasi</a>
         </div>
       </div>
     </b-sidebar>
@@ -27,7 +25,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -36,19 +34,17 @@ export default {
       fullheight: true,
     };
   },
-  computed: mapState([
-      'sidebar', 
-  ]),
+  computed: mapState(["sidebar"]),
   methods: {
-    routeToPageOrganization(){
-      this.$router.push('/');
+    routeToPageOrganization() {
+      this.$router.push("/");
     },
-    routeToPageOrganizationAsset(){
-      this.$router.push('/organization-asset');
+    routeToPageOrganizationAsset() {
+      this.$router.push("/organization-asset");
     },
-    setSidebar(){
-      this.$store.dispatch("setSidebar")
-    }
+    setSidebar() {
+      this.$store.dispatch("setSidebar");
+    },
   },
 };
 </script>

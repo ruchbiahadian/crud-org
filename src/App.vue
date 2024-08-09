@@ -1,19 +1,19 @@
 <template>
   <Sidebar v-if="this.$store.state.token" />
   <Navbar v-if="this.$store.state.token" />
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar.vue'
-  import Sidebar from '@/components/Sidebar.vue'
+import Navbar from "@/components/Navbar.vue";
+import Sidebar from "@/components/Sidebar.vue";
 
-  export default{
-      components:{
-          Navbar,
-          Sidebar
-      }
-  }
+export default {
+  components: {
+    Navbar,
+    Sidebar,
+  },
+};
 </script>
 <style lang="scss">
 #app {
